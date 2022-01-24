@@ -1,12 +1,12 @@
 ﻿using System;
 
-namespace day30_Cab_Invoice_Generator
+namespace Moodanalyzer
 {
-    public class Program
+    class Program
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("WELCOME CAB INVOIC GENERATOR");
+            Console.WriteLine("WELCOME TO CAB INVOICE GENERATOR");
         }
     }
 }
