@@ -1,7 +1,9 @@
 ﻿using Cab_Invoice_Generator;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace day30_Cab_Invoice_Generator
 {  /* UC1:- Calculating Fare of a Ride. 
@@ -49,6 +51,9 @@ namespace day30_Cab_Invoice_Generator
 
             return new InvoiceSummary(rides.Length, totalRidesFare);//return value
         }
+        // UC4:-  INVOICE SERVICE  the invoice service gets the list of rides repository,and  returns the invoice
+        public void MapRidesToUser(string userID, Rides[] rides) => RideRepository.AddRides(userID, rides); //create MapRidesToUser method
+        public InvoiceSummary GetInvoiceSummary(string userID) => this.CalculateFare(RideRepository.GetRides(userID)); //create method GetInvoiceSummary
 
     }
 }
