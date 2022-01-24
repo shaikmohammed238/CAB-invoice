@@ -52,6 +52,22 @@ namespace CabInvoiceGeneratorTest
                 Console.WriteLine(ex.Message);
             }
         }
-    }
+        /* UC2:- Invoice generator should now take in multiple rides,and Calculate Aggregate total for all.
+        */
+        [Test]
+        public void GivenDistanceAndTimeForMultipleRides_ShouldReturnAggregateFare() // Method to Calculate Aggregate Fare Of Multiple Rides
+        {
+            try
+            {
 
+                Rides[] ride = { new Rides(4.0, 5.0), new Rides(3.0, 5.0) }; // store multiple ride rideDistance, Ridetime
+                double aggregateFare = this.cabInvoiceGenerator.GetMultipleRideFare(ride); //call GetMultipleRideFare method and calculat fare
+                Assert.AreEqual(40.0, aggregateFare);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+        }
+    }
 }
