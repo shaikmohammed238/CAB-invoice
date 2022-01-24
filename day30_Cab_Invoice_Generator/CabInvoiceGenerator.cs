@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Cab_Invoice_Generator;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -32,5 +33,22 @@ namespace day30_Cab_Invoice_Generator
             }
             return totalRidesFare / rides.Length;
         }
+
+        /* UC3:- The Invoice generator should now return the following as a part of the invoice.
+                 - Total Number Of Ride
+                 - Total Fare
+                 - Average Fare Per Ride
+         */
+        public InvoiceSummary CalculateFare(Rides[] rides)  //  Method to Calculate Aggregate Fare Of Multiple Rides
+        {
+            double totalRidesFare = 0.0; //store fare
+            foreach (Rides ride in rides) //itterate loop
+            {
+                totalRidesFare += this.CalculateFare(ride.RideDistance, ride.RideTime); //calculate fare
+            }
+
+            return new InvoiceSummary(rides.Length, totalRidesFare);//return value
+        }
+
     }
 }

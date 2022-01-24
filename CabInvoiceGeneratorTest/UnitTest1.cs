@@ -1,3 +1,4 @@
+using Cab_Invoice_Generator;
 using day30_Cab_Invoice_Generator;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using NUnit.Framework;
@@ -68,6 +69,17 @@ namespace CabInvoiceGeneratorTest
             {
                 Console.WriteLine(ex.Message);
             }
+        }
+        /* UC3:- Test Method To Get Enhanced Invoice Summary With More Ride Details.
+       */
+
+        [Test]
+        public void GivenDistanceAndTimeForMultipleRides_WhenProper_ShouldReturnInvoiceSummary()
+        {
+            InvoiceSummary invoiceSummary = new InvoiceSummary(2, 605);
+            Rides[] rides = { new Rides(30, 30), new Rides(25, 25) };
+            InvoiceSummary invoiceSummaryOne = this.cabInvoiceGenerator.CalculateFare(rides);
+            Assert.AreEqual(invoiceSummary, invoiceSummaryOne);
         }
     }
 }
